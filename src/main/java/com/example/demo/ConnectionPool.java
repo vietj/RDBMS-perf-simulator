@@ -24,6 +24,10 @@ public class ConnectionPool {
     this.size = size;
   }
 
+  public synchronized int waiters() {
+    return waiters.size();
+  }
+
   public synchronized Mono<ConnectionPool> create() {
 
     return Mono.fromCompletionStage(() -> {
